@@ -1,5 +1,4 @@
 import paramiko
-import time
 
 
 ssh_client = paramiko.SSHClient()

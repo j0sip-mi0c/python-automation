@@ -1,6 +1,5 @@
 import paramiko
 import time
-import getpass
 
 ssh_client = paramiko.SSHClient()
 #print(type(ssh_client))

@@ -14,22 +14,17 @@ linux = {'hostname': '192.168.1.110','port': '22', 'username': 'x', 'password': 
 print(f'Connecting to {linux["hostname"]}')
 ssh_client.connect(**linux, look_for_keys=False, allow_agent=False)
 
-shell = ssh_client.invoke_shell()
-shell.send('cat /etc/passwd\n')
-time.sleep(1)
-print('Looking for shadow...')
-#shell.send('sudo cat /etc/shadow\n')
-#shell.send('x\n')
-shell.send('ifconfig\n')
+stdin, stdout, stderr = ssh_client.exec_command('sudo useradd u2\n', get_pty=True)
+stdin.write('x\n')
+time.sleep(2)
+
+stdin, stdout, stderr = ssh_client.exec_command('cat /etc/passwd\n')
+print(stdout.read().decode())
 time.sleep(1)
 
-output = shell.recv(10000)
-#print(type(output))
-output = output.decode('utf-8')
-print(output)
+print(stderr.read().decode())
 
 print(ssh_client.get_transport().is_active())
-
 #sending commands
 if ssh_client.get_transport().is_active() == True:
     print('Closing connection')

@@ -26,12 +26,11 @@ def close(ssh_client):
     if ssh_client.get_transport().is_active() == True:
         print('Closing connection')
         ssh_client.close()
+if __name__ == "__main__":
+    router1 = {'server_ip': '10.1.1.10','server_port': '22', 'user': 'u1', 'passwd': 'cisco'}
+    client = connect(**router1)
+    shell = get_shell(client)
+    send_command(shell, 'show ip int brief')
 
-router1 = {'server_ip': '10.1.1.10','server_port': '22', 'user': 'u1', 'passwd': 'cisco'}
-client = connect(**router1)
-shell = get_shell(client)
-send_command(shell, 'show ip int brief')
-
-
-output = show(shell)
-print(output)
+    output = show(shell)
+    print(output)

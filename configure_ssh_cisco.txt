@@ -13,6 +13,7 @@ conf t
 hostname R2
 ip domain-name domain.com
 crypto key generate rsa
+yes
 2048
 ip ssh version 2
 
@@ -20,7 +21,14 @@ line vty 0 4
 transport input ssh telnet
 login local
 
-#configure username and password
-username u2 secret cisco
+#configure username and password (conf t username and secret in configure mode)
+username u1 secret cisco
 line vty 0 4
 login local
+
+#configure privileged EXEC mode (enable must exit)
+enable
+configure terminal
+enable secret cisco
+
+

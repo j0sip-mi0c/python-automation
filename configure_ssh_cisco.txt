@@ -1,4 +1,4 @@
-#configure router username, passwd and SSH connection
+#configure router username, password and SSH connection
 #example R2
 
 #configure IP address

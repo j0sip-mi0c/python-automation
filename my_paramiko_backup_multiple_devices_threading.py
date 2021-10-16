@@ -44,7 +44,14 @@ router2 = {'server_ip': '10.1.1.20', 'server_port': '22', 'user': 'u2', 'passwd'
 router3 = {'server_ip': '10.1.1.30', 'server_port': '22', 'user': 'u3', 'passwd': 'cisco'}
 
 routers = [router1, router2, router3]
-
+threads = list()
 
 for router in routers:
-    backup(router)
+    th = threading.Thread(target=backup, args=(router,))  #comma will make tuple
+    threads.append(th)
+
+for th in threads:
+    th.start()
+
+for th in threads:
+    th.join()

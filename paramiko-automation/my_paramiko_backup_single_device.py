@@ -1,5 +1,4 @@
 import my_paramiko
-import time
 
 router = {'server_ip': '10.1.1.30', 'server_port': '22', 'user': 'u2', 'passwd': 'cisco'}
 client = my_paramiko.connect(**router)

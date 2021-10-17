@@ -1,6 +1,7 @@
 import my_paramiko
 import getpass
 
+
 username = input('Username:')
 password = getpass.getpass()
 
@@ -15,7 +16,8 @@ print('A new user has been created')
 
 answer = input('Display the users? (y/n) ')
 if answer == "y":
-    users = my_paramiko.send_command(remote_connection, 'cat /etc/passwd')
-    print(users.decode())
+    users = my_paramiko.send_command(remote_connection, 'cat /etc/passwd\n')
+    print(users.decode())  #not working for some reason
+
 
 my_paramiko.close(ssh_client)

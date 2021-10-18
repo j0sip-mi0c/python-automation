@@ -31,4 +31,7 @@ enable
 configure terminal
 enable secret cisco
 
+#debug ospf
+debug ip ospf events
+terminal monitor #only if running from putty or ssh
 

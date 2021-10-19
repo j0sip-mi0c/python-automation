@@ -1,5 +1,8 @@
 from netmiko import ConnectHandler
 
+import time
+start = time.time()  #just to measure the time of thread
+
 with open('devices.txt') as f:
     devices = f.read().splitlines()
 
@@ -41,3 +44,5 @@ for ip in devices:
     print(f"Closing connection")
     connection.disconnect()
 
+end = time.time()
+print(f"Total execution time:{end-start}")

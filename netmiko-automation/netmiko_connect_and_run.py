@@ -16,6 +16,7 @@ connection = ConnectHandler(**cisco_device)
 
 print('Running commands...')
 output = connection.send_command('show ip interface brief')
+#output = connection.send_command('show run')
 print(output)
 
 print('Closing connection')

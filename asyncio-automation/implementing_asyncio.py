@@ -14,7 +14,7 @@ async def async_f():
     print('two ', end='')
 
 async def main():
-    #tasks = [async_f(), async_f(), asyncio] #same as below code
+    #tasks = [async_f(), async_f(), asyncio] #same as code below
     tasks = [async_f() for _ in range(3)]
 
     await asyncio.gather(*tasks)
@@ -22,14 +22,14 @@ async def main():
 start = time.time()
 asyncio.run(main())
 end = time.time()
-print(f'Execution time: {end - start}')
+print(f'Execution time(ASYNC): {end - start}')
 print('\n')
 
 start = time.time()
 for _ in range(3):
     sync_f()
 end = time.time()
-print(f'Execution time: {end - start}')
+print(f'Execution time(SYNC): {end - start}')
 
 '''   
 async def f():

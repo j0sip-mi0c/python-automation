@@ -1,0 +1,11 @@
+#configure telnet
+enable
+conf t
+username myadmin secret cisco
+enable secret cisco
+line vty 0 4
+login local
+transport input telnet ssh
+do write
+
+# in windows 10 enable telnet client
